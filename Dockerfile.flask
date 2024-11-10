@@ -1,0 +1,14 @@
+# syntax=docker/dockerfile:1
+
+FROM python:3.13-slim-bookworm
+
+# Copy python app to root directory
+COPY /flask-nginx/app /app
+
+# Create and activate virtual environment
+RUN python3 -m venv /app/.venv; \
+    . /app/.venv/bin/activate; \
+    # Install pip requirements
+    pip install -r /app/requirements.txt
+
+CMD ["/app/.venv/bin/python", "/app/app.py"]

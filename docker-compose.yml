@@ -1,0 +1,23 @@
+name: docker-webpage
+services:
+  flask:
+    image: flask-compose
+    build:
+      context: .
+      dockerfile: ./Dockerfile.flask
+    networks:
+      - network
+  nginx:
+    image: nginx-compose
+    build:
+      context: .
+      dockerfile: ./Dockerfile.nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - flask
+    networks:
+      - network
+
+networks:
+  network:

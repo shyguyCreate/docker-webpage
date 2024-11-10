@@ -1,0 +1,13 @@
+# syntax=docker/dockerfile:1
+
+FROM nginx:1.27-bookworm
+
+EXPOSE 80
+
+# Set nginx config
+COPY /flask-nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Change localhost for the service name in the network 
+RUN sed -i 's/127.0.0.1/flask/g' /etc/nginx/conf.d/default.conf
+
+CMD ["nginx", "-g", "daemon off;"]
