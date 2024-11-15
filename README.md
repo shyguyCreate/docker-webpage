@@ -1,8 +1,6 @@
 # Docker Compose Flask and Nginx
 
-Using **docker compose** to join:
-- Container with Flask application powered by Waitress WSGI server to display a basic html website.
-- Container with Nginx to port forward HTTP calls to the html contents.
+Join a **container** with Flask application powered by Waitress WSGI server to display a basic html website and a **container** using Nginx to port forward HTTP calls to the html contents.
 
 ```
 docker compose up --build
